@@ -1,6 +1,5 @@
 data "azurerm_subscription" "current" {}
 
-# Get the resource group where your VMSS exists
 data "azurerm_resource_group" "vmss_rg" {
   name = "EARTH"
 }
@@ -8,7 +7,7 @@ data "azurerm_resource_group" "vmss_rg" {
 resource "azurerm_consumption_budget_resource_group" "vmss_budget" {
   name              = "vmss-budget-alert"
   resource_group_id = data.azurerm_resource_group.vmss_rg.id
-  amount            = 50 # Budget amount in local currency (INR, USD, etc.)
+  amount            = 50 
   time_grain        = "Monthly"
 
   time_period {
@@ -18,7 +17,7 @@ resource "azurerm_consumption_budget_resource_group" "vmss_budget" {
 
   notification {
     enabled   = true
-    threshold = 80 # Send alert at 80% usage
+    threshold = 80 
     operator  = "GreaterThan"
 
     contact_emails = [

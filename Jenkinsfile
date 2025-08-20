@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/Adarshmog/azure-budget-alert.git'
+                git branch: 'main', url: 'https://github.com/Adarshmog/azure-terraform-budget-alert.git'
             }
         }
 
